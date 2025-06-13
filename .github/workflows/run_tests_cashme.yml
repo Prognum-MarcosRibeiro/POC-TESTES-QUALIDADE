@@ -16,9 +16,11 @@ jobs:
 
       - name: Instalar dependências
         run: npm install
+        working-directory: CashMe
 
       - name: Executar testes Cypress
-        run: npx cypress run --config-file CashMe/cypress.config.js --spec "CashMe/cypress/e2e/*.cy.js"
+        run: npx cypress run --config-file cypress.config.js --spec "cypress/e2e/*.cy.js"
+        working-directory: CashMe
 
       - name: Verificar se o relatório foi gerado
         run: |
