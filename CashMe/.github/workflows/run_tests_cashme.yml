@@ -1,0 +1,50 @@
+name: Run Tests CashMe
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    container:
+      image: cypress/included:14.4.1
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar testes Cypress
+        run: npx cypress run --spec "cypress/e2e/*.cy.js"
+
+      - name: Verificar se o relatório foi gerado
+        run: |
+          if [ ! -f CashMe/cypress/reports/html/mochawesome.html ]; then
+            echo "Relatório não encontrado!"
+            exit 1
+          else
+            echo "Relatório encontrado."
+          fi
+
+      - name: Enviar e-mail com relatório em anexo
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASS }}
+          subject: "[POC - TESTES] CLIENTE CASHME"
+          to: marcos.ribeiro@prognum.com.br
+          from: ${{ secrets.EMAIL_USER }}
+          body: |
+            Prezados,
+            A execução dos testes Cypress foi finalizada com sucesso.
+            
+            ✅ Em anexo, segue o relatório HTML dos testes realizados no dia de hoje.
+
+            Atenciosamente, Marcos Ribeiro.
+          attachments: |
+            CashMe/cypress/reports/html/mochawesome.html
