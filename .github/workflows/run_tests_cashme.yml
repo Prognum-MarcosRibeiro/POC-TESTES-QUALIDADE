@@ -18,7 +18,7 @@ jobs:
         run: npm install
 
       - name: Executar testes Cypress
-        run: npx cypress run --spec "cypress/e2e/*.cy.js"
+        run: npx cypress run --config-file CashMe/cypress.config.js --spec "CashMe/cypress/e2e/*.cy.js"
 
       - name: Verificar se o relatório foi gerado
         run: |
