@@ -1,5 +1,5 @@
-describe('Realizar Acesso no AEJS', () => {
+describe('visit test', () => {
   it('passes', () => {
-    cy.visit('http://10.3.98.108/aejs')
+    cy.visit('https://example.cypress.io')
   })
 })
