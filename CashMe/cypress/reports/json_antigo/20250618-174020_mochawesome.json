@@ -1,0 +1,164 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2025-06-18T20:39:17.551Z",
+    "end": "2025-06-18T20:39:45.711Z",
+    "duration": 28160
+  },
+  "results": [
+    {
+      "uuid": "7ead0b34-5b55-490a-aedc-fcfe2fde1fa8",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api\\simulacao_contratos.cy.js",
+      "file": "cypress\\e2e\\api\\simulacao_contratos.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9e4ee0b7-d297-4290-89ac-d1fbcc5eab40",
+          "title": "Simulação de Evolução de Contrato",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "",
+              "fullTitle": "Simulação de Evolução de Contrato ",
+              "timedOut": null,
+              "duration": 2726,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://desenv.prognum.com.br/aejs/rest/w/wtela/SimulaEvolucaoContrato',\n  qs: {\n    sessionKey: '123456',\n    contexto: 'CORP_WEB',\n    userName: 'loginintegracao',\n    ambienteOperacional: '/u11/cashme/dados/ambiente_integracao'\n  },\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: {\n    \"CADMUT_Financ_Plano\": 111,\n    \"CADMUT_Financ_Prazo\": 12,\n    \"CADMUT_Financ_DtAssin\": \"05/05/2025\",\n    \"CADMUT_Financ_DiaVenc\": 5,\n    \"CADMUT_Financ_TxJuros\": 14.0000000000,\n    \"CADMUT_Financ_ValAval\": 150000.00,\n    \"CADMUT_Financ_ValFinanc\": 110000.00,\n    \"IN_CalculaIOF\": \"T\",\n    \"IN_IOFnoFinanciamento\": \"T\",\n    \"IN_IOFAliquotaMaxima\": \"T\",\n    \"CADMUT_Financ_TTx\": 16,\n    \"CADMUT_Financ_TxAdm\": 25.00,\n    \"CADMUT_Financ_IndSegImv\": 0.000065000,\n    \"CADMUT_Financ_IndSegFin\": 0.000350000,\n    \"CADMUT_Cad2_CodApolice\": 1,\n    \"CADMUT_Cad4_CodApoliceDFI\": 1,\n    \"CADMUT_Financ3_SegReCalcSaldo\": \"T\",\n    \"CADMUT_Cad_TipoCtr\": 40,\n    \"CADMUT_Financ3_JuroEfetivo252\": \"F\",\n    \"CADMUT_Financ3_AmortizaSaldoComNPC0\": \"F\",\n    \"CADMUT_Financ3_JurProrata\": \"T\",\n    \"CADMUT_CAD6_COBRJURCAPPRST1\": \"F\",\n    \"CADMUT_CAD6_PRZCARAMORT\": 0,\n    \"CADMUT_CAD6_INCJURCARAMORT\": 1,\n    \"CADMUT_Cad_FisJur\": \"J\",\n    \"CADMUT_Financ3_NaoCobraSegUltPrst\": \"F\",\n    \"CADMUT_Financ2_SdRata\": 128\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('GRIDEVOLUCAOTEORICA');\n  expect(response.body.GRIDEVOLUCAOTEORICA).to.be.an('array').and.have.length(13);\n  const primeiraParcela = response.body.GRIDEVOLUCAOTEORICA[0];\n  expect(primeiraParcela.PREPRZ).to.eq(\"000/012\");\n  expect(primeiraParcela.PRESTACAO).to.eq(\"73.99\");\n  const ultimaParcela = response.body.GRIDEVOLUCAOTEORICA[12];\n  expect(ultimaParcela.PREPRZ).to.eq(\"012/012\");\n  expect(ultimaParcela.SALDODEV).to.eq(\"0\");\n  expect(response.body).to.have.property('VA_IOF', '2107.62');\n});",
+              "err": {},
+              "uuid": "950cf434-49df-4df0-9a62-9d228a574ae7",
+              "parentUUID": "9e4ee0b7-d297-4290-89ac-d1fbcc5eab40",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "950cf434-49df-4df0-9a62-9d228a574ae7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2726,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "c55940ea-054a-41b2-a6cf-f9e66ceb7d3c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\nav\\validar_supertela.cy.js",
+      "file": "cypress\\e2e\\nav\\validar_supertela.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "efd056ec-ed42-42d8-b1dc-8de85987f73b",
+          "title": "Validar Campos da Super Tela [CashMe]",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "",
+              "fullTitle": "Validar Campos da Super Tela [CashMe] ",
+              "timedOut": null,
+              "duration": 15366,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "executaLoginSupervisor('/u11/cashme/dados');\nacessaContrato();\nvalidaCamposHeader();",
+              "err": {},
+              "uuid": "dd9111ca-2576-41f2-9780-7ddf2a57dc42",
+              "parentUUID": "efd056ec-ed42-42d8-b1dc-8de85987f73b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "dd9111ca-2576-41f2-9780-7ddf2a57dc42"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 15366,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/json",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "inlineAssets": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

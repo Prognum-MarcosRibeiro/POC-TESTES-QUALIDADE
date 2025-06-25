@@ -51,7 +51,7 @@ describe('Simulação de Evolução de Contrato', () => {
       expect(primeiraParcela.PRESTACAO).to.eq("73.99")
 
       const ultimaParcela = response.body.GRIDEVOLUCAOTEORICA[12]
-      expect(ultimaParcela.PREPRZ).to.eq("012/012")
+      expect(ultimaParcela.PREPRZ).to.eq("010/012")
       expect(ultimaParcela.SALDODEV).to.eq("0")
 
       expect(response.body).to.have.property('VA_IOF', '2107.62')
