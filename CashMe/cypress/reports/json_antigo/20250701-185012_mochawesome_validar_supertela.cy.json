@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-07-01T22:13:02.011Z",
-    "end": "2025-07-01T22:13:11.024Z",
-    "duration": 9013,
+    "start": "2025-06-18T20:40:37.305Z",
+    "end": "2025-06-18T20:40:52.917Z",
+    "duration": 15612,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "ec468a26-b755-45ce-9fc3-86457ba2c15d",
+      "uuid": "8463aa66-0411-487d-8132-a8bf955c07be",
       "title": "",
       "fullFile": "cypress\\e2e\\nav\\validar_supertela.cy.js",
       "file": "cypress\\e2e\\nav\\validar_supertela.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "c86e302f-ccae-4b58-b072-8be6d4e8bfae",
+          "uuid": "f6d90845-15cb-4a54-8287-ccc4599bbc27",
           "title": "Validar Campos da Super Tela [CashMe]",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,29 @@
               "title": "",
               "fullTitle": "Validar Campos da Super Tela [CashMe] ",
               "timedOut": null,
-              "duration": 6985,
+              "duration": 13511,
               "state": "passed",
-              "speed": "medium",
+              "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "executaLoginSupervisor('/u11/cashme/dados');\nacessaContrato();\nvalidaCamposHeader();",
               "err": {},
-              "uuid": "5c60f38d-a1c4-49ba-a3a9-ee57c6bbb43c",
-              "parentUUID": "c86e302f-ccae-4b58-b072-8be6d4e8bfae",
+              "uuid": "1ca8100e-6514-40bc-af99-69d45ab05c4c",
+              "parentUUID": "f6d90845-15cb-4a54-8287-ccc4599bbc27",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5c60f38d-a1c4-49ba-a3a9-ee57c6bbb43c"
+            "1ca8100e-6514-40bc-af99-69d45ab05c4c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 6985,
+          "duration": 13511,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

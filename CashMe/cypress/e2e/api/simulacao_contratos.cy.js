@@ -1,5 +1,7 @@
 describe('Simulação de Evolução de Contrato', () => {
-  it('', () => {
+  it('Valida retorno completo da API simulando contrato', () => {
+    let erros = [];
+
     cy.request({
       method: 'POST',
       url: 'https://desenv.prognum.com.br/aejs/rest/w/wtela/SimulaEvolucaoContrato',
@@ -42,19 +44,48 @@ describe('Simulação de Evolução de Contrato', () => {
         "CADMUT_Financ2_SdRata": 128
       }
     }).then((response) => {
-      expect(response.status).to.eq(200)
-      expect(response.body).to.have.property('GRIDEVOLUCAOTEORICA')
-      expect(response.body.GRIDEVOLUCAOTEORICA).to.be.an('array').and.have.length(13)
+      if (response.status !== 200) {
+        erros.push(`Status code esperado 200, mas veio ${response.status} | `);
+      }
 
-      const primeiraParcela = response.body.GRIDEVOLUCAOTEORICA[0]
-      expect(primeiraParcela.PREPRZ).to.eq("000/012")
-      expect(primeiraParcela.PRESTACAO).to.eq("73.99")
+      if (!response.body.hasOwnProperty('GRIDEVOLUCAOTEORICA')) {
+        erros.push("Propriedade 'GRIDEVOLUCAOTEORICA' ausente no body. | ");
+      } else {
+        if (!Array.isArray(response.body.GRIDEVOLUCAOTEORICA) || response.body.GRIDEVOLUCAOTEORICA.length !== 13) {
+          erros.push(`GRIDEVOLUCAOTEORICA deve ser array de 13 elementos, veio ${response.body.GRIDEVOLUCAOTEORICA.length} | `);
+        } else {
+          const primeiraParcela = response.body.GRIDEVOLUCAOTEORICA[0];
+          const ultimaParcela = response.body.GRIDEVOLUCAOTEORICA[12];
 
-      const ultimaParcela = response.body.GRIDEVOLUCAOTEORICA[12]
-      expect(ultimaParcela.PREPRZ).to.eq("010/012")
-      expect(ultimaParcela.SALDODEV).to.eq("0")
+          if (primeiraParcela.PREPRZ !== "000/012") {
+            erros.push(`PREPRZ da 1ª parcela esperado '000/012', veio '${primeiraParcela.PREPRZ}' | `);
+          }
 
-      expect(response.body).to.have.property('VA_IOF', '2107.62')
-    })
-  })
-})
+          if (primeiraParcela.PRESTACAO !== "73.90") {
+            erros.push(`PRESTACAO da 1ª parcela esperado '73.99', veio '${primeiraParcela.PRESTACAO}' | `);
+          }
+
+          if (ultimaParcela.PREPRZ !== "012/012") {
+            erros.push(`PREPRZ da última parcela esperado '010/012', veio '${ultimaParcela.PREPRZ}' | `);
+          }
+
+          if (ultimaParcela.SALDODEV !== "0") {
+            erros.push(`SALDODEV da última parcela esperado '0', veio '${ultimaParcela.SALDODEV}' | `);
+          }
+        }
+      }
+
+      if (response.body.VA_IOF !== '2107.62') {
+        erros.push(`Valor de VA_IOF esperado '2107.62', veio '${response.body.VA_IOF}' | `);
+      }
+    }).then(() => {
+      if (erros.length > 0) {
+        cy.log('Erros encontrados:');
+        erros.forEach((erro) => cy.log(erro));
+        throw new Error(erros.join('\n'));
+      } else {
+        cy.log('Todas as validações passaram.');
+      }
+    });
+  });
+});

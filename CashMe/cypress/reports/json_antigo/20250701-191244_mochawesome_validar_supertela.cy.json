@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2025-07-01T22:13:02.011Z",
-    "end": "2025-07-01T22:13:11.024Z",
-    "duration": 9013,
+    "start": "2025-07-01T22:09:50.665Z",
+    "end": "2025-07-01T22:09:59.831Z",
+    "duration": 9166,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "ec468a26-b755-45ce-9fc3-86457ba2c15d",
+      "uuid": "288703a1-fa6c-4b59-9254-1da3f66b0a49",
       "title": "",
       "fullFile": "cypress\\e2e\\nav\\validar_supertela.cy.js",
       "file": "cypress\\e2e\\nav\\validar_supertela.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "c86e302f-ccae-4b58-b072-8be6d4e8bfae",
+          "uuid": "f46cdb8c-00d5-468a-b64a-80e9041af311",
           "title": "Validar Campos da Super Tela [CashMe]",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "",
               "fullTitle": "Validar Campos da Super Tela [CashMe] ",
               "timedOut": null,
-              "duration": 6985,
+              "duration": 7172,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "executaLoginSupervisor('/u11/cashme/dados');\nacessaContrato();\nvalidaCamposHeader();",
               "err": {},
-              "uuid": "5c60f38d-a1c4-49ba-a3a9-ee57c6bbb43c",
-              "parentUUID": "c86e302f-ccae-4b58-b072-8be6d4e8bfae",
+              "uuid": "b808eefd-9241-4e70-9036-8717dc769c69",
+              "parentUUID": "f46cdb8c-00d5-468a-b64a-80e9041af311",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "5c60f38d-a1c4-49ba-a3a9-ee57c6bbb43c"
+            "b808eefd-9241-4e70-9036-8717dc769c69"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 6985,
+          "duration": 7172,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

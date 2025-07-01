@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 1,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2025-07-01T22:13:02.011Z",
-    "end": "2025-07-01T22:13:11.024Z",
-    "duration": 9013,
+    "failures": 1,
+    "start": "2025-07-01T21:56:11.468Z",
+    "end": "2025-07-01T21:56:24.615Z",
+    "duration": 13147,
     "testsRegistered": 1,
-    "passPercent": 100,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "ec468a26-b755-45ce-9fc3-86457ba2c15d",
+      "uuid": "8976551a-d13e-4d01-bd42-4c5b3bce3e5e",
       "title": "",
       "fullFile": "cypress\\e2e\\nav\\validar_supertela.cy.js",
       "file": "cypress\\e2e\\nav\\validar_supertela.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "c86e302f-ccae-4b58-b072-8be6d4e8bfae",
+          "uuid": "5c2a6113-0e0d-4d49-9a5b-7556e234bfcd",
           "title": "Validar Campos da Super Tela [CashMe]",
           "fullFile": "",
           "file": "",
@@ -38,29 +38,33 @@
               "title": "",
               "fullTitle": "Validar Campos da Super Tela [CashMe] ",
               "timedOut": null,
-              "duration": 6985,
-              "state": "passed",
-              "speed": "medium",
-              "pass": true,
-              "fail": false,
+              "duration": 11156,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
-              "context": null,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\validar_supertela.cy.js\\\\Validar Campos da Super Tela [CashMe] --  (failed).png\"\n    ]\n  ]\n}",
               "code": "executaLoginSupervisor('/u11/cashme/dados');\nacessaContrato();\nvalidaCamposHeader();",
-              "err": {},
-              "uuid": "5c60f38d-a1c4-49ba-a3a9-ee57c6bbb43c",
-              "parentUUID": "c86e302f-ccae-4b58-b072-8be6d4e8bfae",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '<input#aejs-combobox-1245-inputEl.x-form-field.x-form-text.x-form-text-default.>' to have value '001-CASHME SOLUCOES FINANCEIRAS S.A.', but the value was '001-NOME_1'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '<input#aejs-combobox-1245-inputEl.x-form-field.x-form-text.x-form-text-default.>' to have value '001-CASHME SOLUCOES FINANCEIRAS S.A.', but the value was '001-NOME_1'\n    at validaCamposHeader (webpack:///./cypress/e2e/nav/validar_supertela.cy.js:30:44)\n    at Context.eval (webpack:///./cypress/e2e/nav/validar_supertela.cy.js:43:4)",
+                "diff": "- '001-NOME_1'\n+ '001-CASHME SOLUCOES FINANCEIRAS S.A.'\n"
+              },
+              "uuid": "5e48d5b7-4e95-4134-a742-2efdee17f912",
+              "parentUUID": "5c2a6113-0e0d-4d49-9a5b-7556e234bfcd",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "5c60f38d-a1c4-49ba-a3a9-ee57c6bbb43c"
+          "passes": [],
+          "failures": [
+            "5e48d5b7-4e95-4134-a742-2efdee17f912"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 6985,
+          "duration": 11156,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

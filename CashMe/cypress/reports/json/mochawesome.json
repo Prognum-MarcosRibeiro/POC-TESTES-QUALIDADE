@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2025-06-18T20:40:28.001Z",
-    "end": "2025-06-18T20:40:52.917Z",
-    "duration": 24916
+    "start": "2025-07-01T22:12:52.535Z",
+    "end": "2025-07-01T22:13:11.024Z",
+    "duration": 18489
   },
   "results": [
     {
-      "uuid": "d10ca642-6adb-4b89-a0bb-9e57476641f0",
+      "uuid": "dfd9200c-42ac-4b5b-a9c9-7e051e20e651",
       "title": "",
       "fullFile": "cypress\\e2e\\api\\simulacao_contratos.cy.js",
       "file": "cypress\\e2e\\api\\simulacao_contratos.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "0cb15f35-8a4f-46c6-976e-a1f1cad3c3f9",
+          "uuid": "67e9bc89-24e7-4d50-913b-977a3331454f",
           "title": "Simulação de Evolução de Contrato",
           "fullFile": "",
           "file": "",
@@ -35,24 +35,24 @@
           "afterHooks": [],
           "tests": [
             {
-              "title": "",
-              "fullTitle": "Simulação de Evolução de Contrato ",
+              "title": "Valida retorno completo da API simulando contrato",
+              "fullTitle": "Simulação de Evolução de Contrato Valida retorno completo da API simulando contrato",
               "timedOut": null,
-              "duration": 1270,
+              "duration": 538,
               "state": "failed",
               "speed": null,
               "pass": false,
               "fail": true,
               "pending": false,
-              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\simulacao_contratos.cy.js\\\\Simulação de Evolução de Contrato --  (failed).png\"\n    ]\n  ]\n}",
-              "code": "cy.request({\n  method: 'POST',\n  url: 'https://desenv.prognum.com.br/aejs/rest/w/wtela/SimulaEvolucaoContrato',\n  qs: {\n    sessionKey: '123456',\n    contexto: 'CORP_WEB',\n    userName: 'loginintegracao',\n    ambienteOperacional: '/u11/cashme/dados/ambiente_integracao'\n  },\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: {\n    \"CADMUT_Financ_Plano\": 111,\n    \"CADMUT_Financ_Prazo\": 12,\n    \"CADMUT_Financ_DtAssin\": \"05/05/2025\",\n    \"CADMUT_Financ_DiaVenc\": 5,\n    \"CADMUT_Financ_TxJuros\": 14.0000000000,\n    \"CADMUT_Financ_ValAval\": 150000.00,\n    \"CADMUT_Financ_ValFinanc\": 110000.00,\n    \"IN_CalculaIOF\": \"T\",\n    \"IN_IOFnoFinanciamento\": \"T\",\n    \"IN_IOFAliquotaMaxima\": \"T\",\n    \"CADMUT_Financ_TTx\": 16,\n    \"CADMUT_Financ_TxAdm\": 25.00,\n    \"CADMUT_Financ_IndSegImv\": 0.000065000,\n    \"CADMUT_Financ_IndSegFin\": 0.000350000,\n    \"CADMUT_Cad2_CodApolice\": 1,\n    \"CADMUT_Cad4_CodApoliceDFI\": 1,\n    \"CADMUT_Financ3_SegReCalcSaldo\": \"T\",\n    \"CADMUT_Cad_TipoCtr\": 40,\n    \"CADMUT_Financ3_JuroEfetivo252\": \"F\",\n    \"CADMUT_Financ3_AmortizaSaldoComNPC0\": \"F\",\n    \"CADMUT_Financ3_JurProrata\": \"T\",\n    \"CADMUT_CAD6_COBRJURCAPPRST1\": \"F\",\n    \"CADMUT_CAD6_PRZCARAMORT\": 0,\n    \"CADMUT_CAD6_INCJURCARAMORT\": 1,\n    \"CADMUT_Cad_FisJur\": \"J\",\n    \"CADMUT_Financ3_NaoCobraSegUltPrst\": \"F\",\n    \"CADMUT_Financ2_SdRata\": 128\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('GRIDEVOLUCAOTEORICA');\n  expect(response.body.GRIDEVOLUCAOTEORICA).to.be.an('array').and.have.length(13);\n  const primeiraParcela = response.body.GRIDEVOLUCAOTEORICA[0];\n  expect(primeiraParcela.PREPRZ).to.eq(\"000/012\");\n  expect(primeiraParcela.PRESTACAO).to.eq(\"73.99\");\n  const ultimaParcela = response.body.GRIDEVOLUCAOTEORICA[12];\n  expect(ultimaParcela.PREPRZ).to.eq(\"010/012\");\n  expect(ultimaParcela.SALDODEV).to.eq(\"0\");\n  expect(response.body).to.have.property('VA_IOF', '2107.62');\n});",
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"\\\\simulacao_contratos.cy.js\\\\Simulação de Evolução de Contrato -- Valida retorno completo da API simulando contrato (failed).png\"\n    ]\n  ]\n}",
+              "code": "let erros = [];\ncy.request({\n  method: 'POST',\n  url: 'https://desenv.prognum.com.br/aejs/rest/w/wtela/SimulaEvolucaoContrato',\n  qs: {\n    sessionKey: '123456',\n    contexto: 'CORP_WEB',\n    userName: 'loginintegracao',\n    ambienteOperacional: '/u11/cashme/dados/ambiente_integracao'\n  },\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: {\n    \"CADMUT_Financ_Plano\": 111,\n    \"CADMUT_Financ_Prazo\": 12,\n    \"CADMUT_Financ_DtAssin\": \"05/05/2025\",\n    \"CADMUT_Financ_DiaVenc\": 5,\n    \"CADMUT_Financ_TxJuros\": 14.0000000000,\n    \"CADMUT_Financ_ValAval\": 150000.00,\n    \"CADMUT_Financ_ValFinanc\": 110000.00,\n    \"IN_CalculaIOF\": \"T\",\n    \"IN_IOFnoFinanciamento\": \"T\",\n    \"IN_IOFAliquotaMaxima\": \"T\",\n    \"CADMUT_Financ_TTx\": 16,\n    \"CADMUT_Financ_TxAdm\": 25.00,\n    \"CADMUT_Financ_IndSegImv\": 0.000065000,\n    \"CADMUT_Financ_IndSegFin\": 0.000350000,\n    \"CADMUT_Cad2_CodApolice\": 1,\n    \"CADMUT_Cad4_CodApoliceDFI\": 1,\n    \"CADMUT_Financ3_SegReCalcSaldo\": \"T\",\n    \"CADMUT_Cad_TipoCtr\": 40,\n    \"CADMUT_Financ3_JuroEfetivo252\": \"F\",\n    \"CADMUT_Financ3_AmortizaSaldoComNPC0\": \"F\",\n    \"CADMUT_Financ3_JurProrata\": \"T\",\n    \"CADMUT_CAD6_COBRJURCAPPRST1\": \"F\",\n    \"CADMUT_CAD6_PRZCARAMORT\": 0,\n    \"CADMUT_CAD6_INCJURCARAMORT\": 1,\n    \"CADMUT_Cad_FisJur\": \"J\",\n    \"CADMUT_Financ3_NaoCobraSegUltPrst\": \"F\",\n    \"CADMUT_Financ2_SdRata\": 128\n  }\n}).then(response => {\n  if (response.status !== 200) {\n    erros.push(`Status code esperado 200, mas veio ${response.status} | `);\n  }\n  if (!response.body.hasOwnProperty('GRIDEVOLUCAOTEORICA')) {\n    erros.push(\"Propriedade 'GRIDEVOLUCAOTEORICA' ausente no body. | \");\n  } else {\n    if (!Array.isArray(response.body.GRIDEVOLUCAOTEORICA) || response.body.GRIDEVOLUCAOTEORICA.length !== 13) {\n      erros.push(`GRIDEVOLUCAOTEORICA deve ser array de 13 elementos, veio ${response.body.GRIDEVOLUCAOTEORICA.length} | `);\n    } else {\n      const primeiraParcela = response.body.GRIDEVOLUCAOTEORICA[0];\n      const ultimaParcela = response.body.GRIDEVOLUCAOTEORICA[12];\n      if (primeiraParcela.PREPRZ !== \"000/012\") {\n        erros.push(`PREPRZ da 1ª parcela esperado '000/012', veio '${primeiraParcela.PREPRZ}' | `);\n      }\n      if (primeiraParcela.PRESTACAO !== \"73.90\") {\n        erros.push(`PRESTACAO da 1ª parcela esperado '73.90', veio '${primeiraParcela.PRESTACAO}' | `);\n      }\n      if (ultimaParcela.PREPRZ !== \"010/012\") {\n        erros.push(`PREPRZ da última parcela esperado '010/012', veio '${ultimaParcela.PREPRZ}' | `);\n      }\n      if (ultimaParcela.SALDODEV !== \"0\") {\n        erros.push(`SALDODEV da última parcela esperado '0', veio '${ultimaParcela.SALDODEV}' | `);\n      }\n    }\n  }\n  if (response.body.VA_IOF !== '2107.62') {\n    erros.push(`Valor de VA_IOF esperado '2107.62', veio '${response.body.VA_IOF}' | `);\n  }\n}).then(() => {\n  if (erros.length > 0) {\n    cy.log('Erros encontrados:');\n    erros.forEach(erro => cy.log(erro));\n    throw new Error(erros.join('\\n'));\n  } else {\n    cy.log('Todas as validações passaram.');\n  }\n});",
               "err": {
-                "message": "AssertionError: expected '012/012' to equal '010/012'",
-                "estack": "AssertionError: expected '012/012' to equal '010/012'\n    at Context.eval (webpack:///./cypress/e2e/api/simulacao_contratos.cy.js:54:38)\n    at getRet (http://localhost:60490/__cypress/runner/cypress_runner.js:120941:20)\n    at tryCatcher (http://localhost:60490/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:60490/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:60490/__cypress/runner/cypress_runner.js:120952:66)\n    at Context.then (http://localhost:60490/__cypress/runner/cypress_runner.js:121203:21)",
-                "diff": "- '012/012'\n+ '010/012'\n"
+                "message": "Error: PRESTACAO da 1ª parcela esperado '73.90', veio '73.99' | \nPREPRZ da última parcela esperado '010/012', veio '012/012' | ",
+                "estack": "Error: PRESTACAO da 1ª parcela esperado '73.90', veio '73.99' | \nPREPRZ da última parcela esperado '010/012', veio '012/012' | \n    at Context.eval (webpack:///./cypress/e2e/api/simulacao_contratos.cy.js:85:14)\n    at getRet (http://localhost:64370/__cypress/runner/cypress_runner.js:120941:20)\n    at tryCatcher (http://localhost:64370/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (http://localhost:64370/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (http://localhost:64370/__cypress/runner/cypress_runner.js:120952:66)\n    at Context.then (http://localhost:64370/__cypress/runner/cypress_runner.js:121203:21)\n    at wrapped (http://localhost:64370/__cypress/runner/cypress_runner.js:141524:19)\n    at <unknown> (http://localhost:64370/__cypress/runner/cypress_runner.js:147469:15)\n    at tryCatcher (http://localhost:64370/__cypress/runner/cypress_runner.js:1777:23)",
+                "diff": null
               },
-              "uuid": "f71b9c03-6eeb-4794-b892-e0565d85fb71",
-              "parentUUID": "0cb15f35-8a4f-46c6-976e-a1f1cad3c3f9",
+              "uuid": "16c96386-d8f1-4e5b-9f16-4c7df09a408d",
+              "parentUUID": "67e9bc89-24e7-4d50-913b-977a3331454f",
               "isHook": false,
               "skipped": false
             }
@@ -60,11 +60,11 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "f71b9c03-6eeb-4794-b892-e0565d85fb71"
+            "16c96386-d8f1-4e5b-9f16-4c7df09a408d"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 1270,
+          "duration": 538,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -80,7 +80,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "8463aa66-0411-487d-8132-a8bf955c07be",
+      "uuid": "ec468a26-b755-45ce-9fc3-86457ba2c15d",
       "title": "",
       "fullFile": "cypress\\e2e\\nav\\validar_supertela.cy.js",
       "file": "cypress\\e2e\\nav\\validar_supertela.cy.js",
@@ -89,7 +89,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "f6d90845-15cb-4a54-8287-ccc4599bbc27",
+          "uuid": "c86e302f-ccae-4b58-b072-8be6d4e8bfae",
           "title": "Validar Campos da Super Tela [CashMe]",
           "fullFile": "",
           "file": "",
@@ -100,29 +100,29 @@
               "title": "",
               "fullTitle": "Validar Campos da Super Tela [CashMe] ",
               "timedOut": null,
-              "duration": 13511,
+              "duration": 6985,
               "state": "passed",
-              "speed": "slow",
+              "speed": "medium",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
               "code": "executaLoginSupervisor('/u11/cashme/dados');\nacessaContrato();\nvalidaCamposHeader();",
               "err": {},
-              "uuid": "1ca8100e-6514-40bc-af99-69d45ab05c4c",
-              "parentUUID": "f6d90845-15cb-4a54-8287-ccc4599bbc27",
+              "uuid": "5c60f38d-a1c4-49ba-a3a9-ee57c6bbb43c",
+              "parentUUID": "c86e302f-ccae-4b58-b072-8be6d4e8bfae",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "1ca8100e-6514-40bc-af99-69d45ab05c4c"
+            "5c60f38d-a1c4-49ba-a3a9-ee57c6bbb43c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 13511,
+          "duration": 6985,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
