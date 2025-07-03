@@ -18,7 +18,7 @@ function acessaContrato() {
     cy.contains('Pesquisar', { timeout: 10000 }).should('be.visible')
     cy.contains('Contrato').type('000054-0')
     cy.contains('Pesquisar').click()
-    cy.contains('Adquirente_00000000002720', { timeout: 10000 }).should('be.visible').dblclick();
+    cy.contains('Adquirente_00000000002801', { timeout: 10000 }).should('be.visible').dblclick();
 }
 
 function validaCamposHeader() {
@@ -27,7 +27,7 @@ function validaCamposHeader() {
     cy.get('[name="CADMUT_FINANC_VALFINANC"]').should('have.value', '101.169,53')
     cy.get('[name="CALCULO_DIV$TXJUROS_EFETIVA_ANUAL"]').should('have.value', '21,27000000 %')
     cy.get('[name="CALCULO_DIV$PLANO_ATUAL"]').should('have.value', '111 - GEN/TP   ')
-    cy.get('[name="CALCULO_DIV$DONOCRED"]').should('have.value', '001-NOME_1')
+    cy.get('[name="CALCULO_DIV$DONOCRED"]').should('have.value', '001-CASHME SOLUCOES FINANCEIRAS S.A.')
     cy.get('[name="CALCULO_DIV$PRAZO_REMANESCENTE_MESES"]').should('have.value', '240')
     cy.get('[name="CALCULO_DIV$NU_PRESTACOES_PAGAS"]').should('have.value', '0')
     cy.get('[name="CALCULO_DIV$NU_PRESTACOES_DISPONIVEIS"]').should('have.value', '0')

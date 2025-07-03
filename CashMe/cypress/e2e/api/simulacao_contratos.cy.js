@@ -58,15 +58,15 @@ describe('Simulação de Evolução de Contrato', () => {
           const ultimaParcela = response.body.GRIDEVOLUCAOTEORICA[12];
 
           if (primeiraParcela.PREPRZ !== "000/012") {
-            erros.push(`PREPRZ da 1ª parcela esperado '000/012', veio '${primeiraParcela.PREPRZ}' | `);
+            erros.push(`PREPRZ da 1ª parcela esperado '012/012', veio '${primeiraParcela.PREPRZ}' | `);
           }
 
-          if (primeiraParcela.PRESTACAO !== "73.90") {
+          if (primeiraParcela.PRESTACAO !== "73.99") {
             erros.push(`PRESTACAO da 1ª parcela esperado '73.99', veio '${primeiraParcela.PRESTACAO}' | `);
           }
 
           if (ultimaParcela.PREPRZ !== "012/012") {
-            erros.push(`PREPRZ da última parcela esperado '010/012', veio '${ultimaParcela.PREPRZ}' | `);
+            erros.push(`PREPRZ da última parcela esperado '012/012', veio '${ultimaParcela.PREPRZ}' | `);
           }
 
           if (ultimaParcela.SALDODEV !== "0") {
