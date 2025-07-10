@@ -1,25 +1,23 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// ---------------- Testes de Navegação ----------------;
+Cypress.Commands.add('loginSupervisor', () => {
+  const usuario = 'supervisor';
+  const senha = 'Tempo+2023';
+  const ambienteOperacional = '/u11/cashme/dados'
+
+  cy.visit('http://10.3.98.108/aejs/');
+  cy.title().should('include', 'AEJS');
+
+  cy.contains('Nome').type(usuario);
+  cy.contains('Senha').type(senha, { delay: 50 });
+  cy.contains('Ambiente').type(ambienteOperacional);
+  cy.contains('Login').click();
+});
+
+Cypress.Commands.add('acessarContrato', (contrato) => {
+  cy.contains('SCCI').click();
+  cy.contains('Contratos e Mutuários').click();
+  cy.contains('Pesquisar', { timeout: 10000 }).should('be.visible');
+  cy.contains('Contrato').type(contrato);
+  cy.contains('Pesquisar').click();
+  cy.contains('Adquirente_', { timeout: 10000 }).last().should('be.visible').dblclick();
+});
