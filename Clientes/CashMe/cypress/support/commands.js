@@ -1,4 +1,4 @@
-// ---------------- Testes de API ----------------;
+// ---------------- Soft Assert ---------------- //
 let softErrors = [];
 
 Cypress.Commands.add('softAssert', (condition, message) => {
@@ -10,8 +10,14 @@ Cypress.Commands.add('softAssert', (condition, message) => {
 
 Cypress.Commands.add('checkSoftAsserts', () => {
   if (softErrors.length > 0) {
-    throw new Error(`Erro(s) encontrado(s):\n${softErrors.join('\n')}`);
+    cy.wrap(null, { log: false }).then(() => {
+      throw new Error(`Erro(s) encontrado(s):\n${softErrors.join('\n')}`);
+    });
   }
+});
+
+beforeEach(() => {
+  softErrors = [];
 });
 
 // ---------------- Testes de Navegação ----------------;

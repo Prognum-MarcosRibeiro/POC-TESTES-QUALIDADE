@@ -1,3 +1,25 @@
+// ---------------- Soft Assert ---------------- //
+let softErrors = [];
+
+Cypress.Commands.add('softAssert', (condition, message) => {
+  if (!condition) {
+    cy.log(`❌ ${message}`);
+    softErrors.push(message);
+  }
+});
+
+Cypress.Commands.add('checkSoftAsserts', () => {
+  if (softErrors.length > 0) {
+    cy.wrap(null, { log: false }).then(() => {
+      throw new Error(`Erro(s) encontrado(s):\n${softErrors.join('\n')}`);
+    });
+  }
+});
+
+beforeEach(() => {
+  softErrors = [];
+});
+
 // ---------------- Testes de Navegação ----------------;
 Cypress.Commands.add('loginSupervisor', () => {
   const usuario = 'supervisor';

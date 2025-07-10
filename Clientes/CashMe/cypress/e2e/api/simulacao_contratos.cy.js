@@ -1,4 +1,4 @@
-describe('Simulação de Evolução de Contrato', () => {
+describe('CashMe | Simulação de Evolução de Contrato', () => {
   const url = 'https://10.3.98.108/aejs/rest/w/wtela/SimulaEvolucaoContrato';
 
   const queryParams = {
