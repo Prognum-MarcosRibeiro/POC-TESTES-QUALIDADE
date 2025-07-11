@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-07-10T19:50:36.508Z",
+    "end": "2025-07-10T19:50:36.993Z",
+    "duration": 485,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "df53a5e2-1647-46ec-be04-4fa1e339ad03",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api\\simulacao_contratos.cy.js",
+      "file": "cypress\\e2e\\api\\simulacao_contratos.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f9aeb14c-80dc-4ff0-8a24-39cf69479ef1",
+          "title": "CashMe | Simulação de Evolução de Contrato",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "",
+              "fullTitle": "CashMe | Simulação de Evolução de Contrato ",
+              "timedOut": null,
+              "duration": 430,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url,\n  qs: queryParams,\n  headers,\n  body: requestBody,\n  failOnStatusCode: false\n}).then(response => {\n  cy.softAssert(response.status === 200, `Status esperado 200, veio ${response.status}`);\n  const body = response.body;\n  const temGrid = body.hasOwnProperty('GRIDEVOLUCAOTEORICA');\n  cy.softAssert(temGrid, `Propriedade 'GRIDEVOLUCAOTEORICA' ausente no body.`);\n  if (temGrid) {\n    validarGridEvolucaoTeorica(body.GRIDEVOLUCAOTEORICA);\n  }\n  cy.softAssert(body.VA_IOF === '2107.62', `Valor de VA_IOF esperado '2107.62', veio '${body.VA_IOF}'`);\n}).then(() => {\n  cy.checkSoftAsserts();\n});",
+              "err": {},
+              "uuid": "f2a10ef3-736b-4cad-9046-9a7bfc74f4b5",
+              "parentUUID": "f9aeb14c-80dc-4ff0-8a24-39cf69479ef1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f2a10ef3-736b-4cad-9046-9a7bfc74f4b5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 430,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/json",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "inlineAssets": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

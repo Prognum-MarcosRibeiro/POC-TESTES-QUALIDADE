@@ -43,3 +43,14 @@ Cypress.Commands.add('acessarContrato', (contrato) => {
   cy.contains('Pesquisar').click();
   cy.contains('Adquirente_', { timeout: 10000 }).last().should('be.visible').dblclick();
 });
+
+// ---------------- Testes de Planilhas ----------------;
+const XLSX = require('xlsx');
+
+Cypress.Commands.add('readExcel', (filePath) => {
+  return cy.task('parseXlsx', filePath);
+});
+
+Cypress.Commands.add('readExcelCell', (filePath, cell) => {
+  return cy.task('parseXlsxCell', { filePath, cell });
+});

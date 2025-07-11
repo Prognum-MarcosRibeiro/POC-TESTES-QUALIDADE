@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress');
 const fs = require('fs');
 const pdf = require('pdf-parse');
+const XLSX = require('xlsx');
 
 module.exports = defineConfig({
   e2e: {
@@ -12,12 +13,30 @@ module.exports = defineConfig({
             return data.text;
           });
         },
+
         salvarArquivo({ caminho, conteudo }) {
           fs.writeFileSync(caminho, conteudo, 'binary');
           return null;
+        },
+
+        parseXlsx({ filePath }) {
+          const workbook = XLSX.readFile(filePath);
+          const sheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[sheetName];
+          return XLSX.utils.sheet_to_json(worksheet, { defval: "" });
+        },
+
+        parseXlsxCell({ filePath, cell }) {
+          const workbook = XLSX.readFile(filePath);
+          const sheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[sheetName];
+          const cellValue = worksheet[cell] ? worksheet[cell].v : null;
+          return cellValue;
         }
+
       });
     },
+
     supportFile: 'cypress/support/e2e.js',
     specPattern: 'cypress/e2e/**/*.cy.js',
     screenshotsFolder: 'cypress/screenshots',
