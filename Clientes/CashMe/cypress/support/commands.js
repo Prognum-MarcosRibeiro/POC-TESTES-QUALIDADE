@@ -35,13 +35,17 @@ Cypress.Commands.add('loginSupervisor', () => {
   cy.contains('Login').click();
 });
 
-Cypress.Commands.add('acessarContrato', (contrato) => {
+Cypress.Commands.add('acessarContrato', (contrato, opcaoTreeView) => {
   cy.contains('SCCI').click();
   cy.contains('Contratos e Mutuários').click();
   cy.contains('Pesquisar', { timeout: 10000 }).should('be.visible');
   cy.contains('Contrato').type(contrato);
   cy.contains('Pesquisar').click();
   cy.contains('Adquirente_', { timeout: 10000 }).last().should('be.visible').dblclick();
+
+  opcaoTreeView === 'Mutuário'
+    ? null
+    : cy.contains(opcaoTreeView).click();
 });
 
 // ---------------- Testes de Planilhas ----------------;
