@@ -2,6 +2,7 @@ const { defineConfig } = require('cypress');
 const fs = require('fs');
 const pdf = require('pdf-parse');
 const XLSX = require('xlsx');
+const { gravarResultadoTeste } = require('./cypress/util/db');
 
 module.exports = defineConfig({
   e2e: {
@@ -32,9 +33,22 @@ module.exports = defineConfig({
           const worksheet = workbook.Sheets[sheetName];
           const cellValue = worksheet[cell] ? worksheet[cell].v : null;
           return cellValue;
-        }
+        },
 
+        salvarResultado({ nomeTeste, status, mensagem, dataInicio, dataFim }) {
+          return gravarResultadoTeste(nomeTeste, status, mensagem, dataInicio, dataFim)
+            .then(result => {
+              console.log('Resultado gravado com ID:', result.id);
+              return null;
+            })
+            .catch(err => {
+              console.error('Erro ao gravar resultado no PostgreSQL:', err);
+              return null;
+            });
+        }
       });
+
+      return config;
     },
 
     supportFile: 'cypress/support/e2e.js',

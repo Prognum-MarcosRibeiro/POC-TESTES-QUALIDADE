@@ -62,7 +62,7 @@ def executar_testes_cypress():
             print(f'Executando spec: {spec}')
             resultado = subprocess.run(
                 [npx_path, 'cypress', 'run', '--spec', spec],
-                check=False,  # ← permite erro sem parar o script
+                check=False,
                 capture_output=True,
                 text=True,
                 encoding='utf-8'
